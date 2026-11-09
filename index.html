@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahul A · Product Manager</title>
+<meta name="description" content="Rahul A, Associate Product Manager at Supertails. Platform migration, search, ads integrations, CDP, retail media and data platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: airy white editorial page. Staggered statement hero, chapter picker, then
+   full-height split sections (text left, gradient "scene" with a floating cue right). */
+:root {
+  --bg: #ffffff;
+  --ink: #151517;
+  --muted: #6c6c75;
+  --ghost: #c4c4cc;
+  --line: #ececf0;
+  --soft: #f6f5f9;
+  --v: #9d8df1;   /* violet */
+  --p: #e58fb6;   /* pink */
+  --o: #efa35a;   /* peach */
+  --grad: linear-gradient(90deg, var(--v), var(--p) 55%, var(--o));
+  --f: "Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --gut: max(20px, 5.5vw);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.6 var(--f); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--v); outline-offset: 4px; border-radius: 6px; }
+h1, h2, h3, p { margin: 0; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.label { font: 500 .72rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.side { padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- loader ---------- */
+#loader { position: fixed; inset: 0; z-index: 200; background: var(--bg); display: grid; place-items: center; transition: opacity .6s ease, visibility .6s; }
+#loader.done { opacity: 0; visibility: hidden; }
+#loader .in { display: grid; justify-items: center; gap: 22px; }
+.logo { display: inline-flex; align-items: center; gap: 16px; }
+.orb { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, #c9c9d2 35%, #2b2b30 75%); box-shadow: inset -3px -4px 8px rgba(0,0,0,.35); flex: none; }
+.logo .word { font: 400 .95rem/1 var(--f); letter-spacing: .6em; text-transform: uppercase; }
+#loader .bar { width: 160px; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+#loader .bar i { display: block; height: 100%; background: var(--grad); transform-origin: left; transform: scaleX(0); animation: load 1s ease forwards; }
+@keyframes load { to { transform: scaleX(1); } }
+
+/* ---------- nav ---------- */
+header.top { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+header.top .row { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 76px; }
+header.top .logo .orb { width: 26px; height: 26px; }
+header.top .logo .word { font-size: .82rem; }
+nav.links { display: flex; align-items: center; gap: 40px; }
+nav.links a { font: 400 .82rem/1 var(--f); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+nav.links a:hover, nav.links a.on { color: var(--ink); }
+.cta { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff !important; padding: 15px 22px; font: 500 .8rem/1 var(--f) !important; letter-spacing: .16em !important; text-transform: uppercase; }
+.cta:hover { background: #000; }
+@media (max-width: 900px) { nav.links { gap: 20px; } nav.links a.opt { display: none; } .cta { padding: 12px 14px; } }
+
+/* ---------- hero ---------- */
+.hero { padding-top: calc(76px + 8vh + env(safe-area-inset-top, 0px)); }
+.intro { font: 400 clamp(1.1rem, .6vw + .9rem, 1.4rem)/1.35 var(--f); max-width: 34ch; }
+.intro span { color: var(--muted); }
+.statement { margin-top: 16vh; font: 300 clamp(2.5rem, 6vw, 6.6rem)/1.06 var(--f); letter-spacing: -.045em; }
+.statement span { display: block; white-space: nowrap; }
+.statement .l1 { padding-left: 23%; }
+.statement .l2 { padding-left: 7%; }
+.statement .l4 { padding-left: 17%; }
+@media (max-width: 760px) { .statement span { white-space: normal; padding-left: 0 !important; } .statement { margin-top: 10vh; } }
+.lede { margin: 14vh auto 0; max-width: 34rem; font: 400 clamp(1.1rem, .5vw + .95rem, 1.35rem)/1.6 var(--f); }
+.lede-wrap { padding-bottom: 18vh; }
+
+/* scroll reveal words */
+.reveal .w { color: var(--ghost); transition: color .25s ease; }
+.reveal .w.on { color: var(--ink); }
+
+/* ---------- chapter picker ---------- */
+.picker { min-height: 92vh; display: grid; align-content: center; justify-items: center; text-align: center; gap: 56px; padding-block: 14vh; border-top: 1px solid var(--line); }
+.picker h2 { font: 300 clamp(1.8rem, 2.6vw + 1rem, 3rem)/1.1 var(--f); letter-spacing: -.03em; color: var(--muted); }
+.words { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 64px; max-width: 78rem; }
+.words a { font: 300 clamp(2.2rem, 4.6vw, 4.8rem)/1.05 var(--f); letter-spacing: -.04em; color: var(--ink); transition: color .25s, opacity .25s; }
+.words:hover a { color: var(--ghost); }
+.words a:hover, .words a:focus-visible { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pick-cap { min-height: 1.6em; font-size: 1rem; color: var(--muted); }
+.pick-cap b { color: var(--ink); font-weight: 500; }
+
+/* ---------- chapter divider ---------- */
+.chapter { padding-block: 22vh 16vh; border-top: 1px solid var(--line); display: grid; justify-items: center; text-align: center; gap: 26px; background: linear-gradient(180deg, var(--soft), var(--bg)); }
+.chapter h2 { font: 300 clamp(2.8rem, 7vw, 7.4rem)/1 var(--f); letter-spacing: -.05em; }
+.chapter .sum { max-width: 36rem; font: 400 clamp(1.1rem, .5vw + .95rem, 1.3rem)/1.6 var(--f); }
+.chapter .jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px; }
+.chapter .jump a { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; color: var(--muted); background: var(--bg); transition: color .2s, border-color .2s; }
+.chapter .jump a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- project split ---------- */
+.proj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 94vh; border-top: 1px solid var(--line); }
+.proj .txt { padding: 14vh 5vw 9vh max(var(--gut), env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 30px; min-width: 0; }
+.proj .ttl { font: 300 clamp(3rem, 6.4vw, 6.8rem)/.98 var(--f); letter-spacing: -.05em; }
+.proj .para { font: 400 clamp(1.1rem, .45vw + .95rem, 1.32rem)/1.6 var(--f); max-width: 34rem; }
+.facts { display: flex; flex-wrap: wrap; gap: 28px 40px; }
+.facts div { display: grid; gap: 4px; }
+.facts b { font: 300 clamp(1.8rem, 1.6vw + 1rem, 2.6rem)/1 var(--f); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.facts span { font-size: .85rem; color: var(--muted); }
+.next { margin-top: 18px; display: grid; gap: 12px; }
+.next .label { letter-spacing: .06em; text-transform: none; font: 400 .85rem/1 var(--f); }
+.next nav { display: flex; flex-wrap: wrap; gap: 8px 30px; }
+.next nav a { font: 300 clamp(1.2rem, .8vw + 1rem, 1.7rem)/1.3 var(--f); letter-spacing: -.02em; color: var(--muted); transition: color .2s; }
+.next nav a:hover { color: var(--ink); }
+.proj .vis { position: relative; overflow: hidden; min-height: 520px; display: grid; place-items: center; padding: 60px 24px; }
+@media (max-width: 900px) {
+  .proj { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .proj .txt { padding: 80px max(var(--gut), env(safe-area-inset-right, 0px)) 48px max(var(--gut), env(safe-area-inset-left, 0px)); }
+  .proj .vis { min-height: 480px; padding-bottom: 150px; }
+}
+
+/* gradient scenes */
+.vis::before { content: ""; position: absolute; inset: -20%; z-index: 0; animation: drift 18s ease-in-out infinite alternate; }
+@keyframes drift { to { transform: translate3d(-4%, 3%, 0) scale(1.06); } }
+.s1::before { background: radial-gradient(40% 40% at 25% 30%, #cdbfff, transparent 70%), radial-gradient(45% 45% at 80% 75%, #ffc7a6, transparent 70%), radial-gradient(40% 40% at 70% 20%, #ffc2dc, transparent 70%), #f4f0fb; }
+.s2::before { background: radial-gradient(45% 45% at 75% 25%, #bfe3ff, transparent 70%), radial-gradient(40% 40% at 20% 80%, #d8c9ff, transparent 70%), radial-gradient(35% 35% at 60% 70%, #ffd3e6, transparent 70%), #f2f4fb; }
+.s3::before { background: radial-gradient(45% 45% at 30% 70%, #ffd0b0, transparent 70%), radial-gradient(40% 40% at 75% 30%, #f6c1e0, transparent 70%), radial-gradient(35% 35% at 20% 20%, #fff0c2, transparent 70%), #fbf4f1; }
+.s4::before { background: radial-gradient(45% 45% at 70% 70%, #c6f0e6, transparent 70%), radial-gradient(40% 40% at 25% 25%, #cfd8ff, transparent 70%), radial-gradient(35% 35% at 80% 20%, #e6d4ff, transparent 70%), #f1f6f7; }
+.vis > * { position: relative; z-index: 1; }
+
+/* glass card */
+.glass { width: min(440px, 100%); background: rgba(255,255,255,.72); backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2); border: 1px solid rgba(255,255,255,.9); border-radius: 24px; padding: 22px; box-shadow: 0 40px 80px -30px rgba(60,40,100,.35), 0 2px 6px rgba(60,40,100,.06); display: grid; gap: 14px; font-size: .86rem; }
+.g-hd { display: flex; justify-content: space-between; gap: 10px; font: 500 .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.row2 { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.box { border-radius: 14px; background: #fff; border: 1px solid var(--line); padding: 12px; display: grid; gap: 6px; }
+.box .t { font: 500 .6rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.box b { font-weight: 500; font-size: .86rem; line-height: 1.3; }
+.box.old b { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--p); }
+.box.new { border: 1px solid transparent; background-image: linear-gradient(#fff, #fff), var(--grad); background-origin: border-box; background-clip: padding-box, border-box; }
+.arrow-r { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { padding: 4px 9px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); font-size: .72rem; color: var(--muted); }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.list li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); }
+.list li i { font: 500 .66rem/1 var(--mono); font-style: normal; color: var(--ghost); }
+.list li em { font: 500 .6rem/1 var(--mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: #2f8f5b; background: #e6f6ec; padding: 4px 7px; border-radius: 6px; }
+.search { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+.search .caret { width: 1px; height: 1.1em; background: var(--v); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.thumbs div { aspect-ratio: 1; border-radius: 12px; background: linear-gradient(135deg, #f1edf9, #fbeff3); border: 1px solid var(--line); max-width: 100%; }
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr) 2.6rem; gap: 10px; align-items: center; font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar .tr { height: 8px; border-radius: 8px; background: var(--line); overflow: hidden; }
+.bar .tr i { display: block; height: 100%; width: var(--w); border-radius: 8px; background: var(--ghost); }
+.bar.after .tr i { background: var(--grad); }
+.bar b { color: var(--ink); font-weight: 500; text-align: right; }
+.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.merge { text-align: center; color: var(--muted); }
+.pill-d { justify-self: center; padding: 8px 14px; border-radius: 999px; border: 1px dashed var(--v); font-size: .76rem; background: #fff; }
+.final { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 14px; border-radius: 14px; border: 1px solid transparent; background-image: linear-gradient(#fff, #fff), var(--grad); background-origin: border-box; background-clip: padding-box, border-box; }
+.final b { font-weight: 500; }
+.final span { font-size: .74rem; color: #2f8f5b; }
+.code { font-family: var(--mono); font-size: .74rem; color: var(--muted); overflow-wrap: anywhere; }
+.code .k { color: #6a55d8; } .code .s { color: #c06a2b; }
+.ev { display: grid; gap: 6px; }
+.ev div { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: 8px; padding: 9px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); font: 400 .74rem/1.4 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.ev .ok { color: #2f8f5b; } .ev .k { color: #6a55d8; } .ev .s { color: #c06a2b; }
+.shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.prod { position: relative; border-radius: 14px; background: #fff; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; }
+.prod .img { aspect-ratio: 1; border-radius: 10px; background: linear-gradient(135deg, #f3f0f8, #f9f3ef); max-width: 100%; }
+.prod .ln { height: 6px; border-radius: 3px; background: var(--line); }
+.prod.sp { border: 1px solid transparent; background-image: linear-gradient(#fff, #fff), var(--grad); background-origin: border-box; background-clip: padding-box, border-box; }
+.prod.sp .img { background: linear-gradient(135deg, #e4dcff, #ffd9e8 60%, #ffe0c4); }
+.prod .sp-tag { position: absolute; top: 12px; left: 12px; font: 500 .52rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 4px 6px; border-radius: 5px; }
+.pet { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 58px; height: 58px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; color: #fff; font: 500 1.3rem/1 var(--f); }
+.pet b { font-size: 1.15rem; font-weight: 500; display: block; }
+.pet span { color: var(--muted); font-size: .82rem; }
+.kv { display: grid; gap: 6px; }
+.kv div { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: .8rem; }
+.kv div span { color: var(--muted); }
+.kv .yes { color: #2f8f5b; }
+.chat { display: grid; gap: 10px; }
+.bub { max-width: 90%; padding: 11px 14px; border-radius: 16px; font-size: .84rem; }
+.bub.me { justify-self: end; background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+.bub.ai { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.tool { font: 400 .7rem/1.4 var(--mono); color: var(--muted); padding-left: 4px; }
+.mini { width: 100%; border-collapse: collapse; margin-top: 8px; font: 400 .72rem/1.3 var(--mono); }
+.mini th, .mini td { text-align: left; padding: 6px 4px; border-top: 1px solid var(--line); }
+.mini th { color: var(--muted); font-weight: 400; }
+.mask { color: var(--p); }
+.lanes { display: grid; gap: 10px; }
+.lane { position: relative; height: 38px; border-radius: 12px; background: #fff; border: 1px solid var(--line); overflow: hidden; }
+.lane .lab { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font: 400 .7rem/1 var(--mono); color: var(--muted); z-index: 1; }
+.lane i { position: absolute; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%; left: -12px; background: var(--v); animation: flow 3.4s linear infinite; }
+.lane i:nth-of-type(2) { animation-delay: -1.2s; background: var(--p); }
+.lane i:nth-of-type(3) { animation-delay: -2.3s; background: var(--o); }
+.lane:nth-child(2) i { animation-duration: 2.7s; }
+.lane:nth-child(3) i { animation-duration: 4s; }
+@keyframes flow { to { left: 100%; } }
+.stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; font: 400 .7rem/1 var(--mono); color: var(--muted); }
+.stages span { padding: 9px 4px; border-radius: 10px; background: #fff; border: 1px solid var(--line); }
+svg.diag { width: 100%; height: auto; display: block; max-width: 100%; }
+.dash { stroke-dasharray: 4 6; animation: dashmv 1.3s linear infinite; }
+@keyframes dashmv { to { stroke-dashoffset: -20; } }
+.kpis3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis3 div { padding: 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); display: grid; gap: 8px; }
+.kpis3 span { font-size: .72rem; color: var(--muted); }
+.kpis3 i { display: block; height: 6px; border-radius: 3px; background: var(--grad); width: var(--w); }
+canvas.geo { width: 100%; height: 230px; display: block; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+
+/* floating cue (like a notification on the scene) */
+.cue { position: absolute; right: 7%; bottom: 9%; z-index: 2; display: grid; justify-items: start; gap: 8px; animation: float 5s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-6px); } }
+.cue .card { display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 999px; background: rgba(28,28,32,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; box-shadow: 0 16px 34px -12px rgba(0,0,0,.45); }
+.cue .ico { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; font: 600 .78rem/1 var(--f); color: #fff; flex: none; }
+.cue .card div span { display: block; font-size: .7rem; color: rgba(255,255,255,.6); }
+.cue .card div b { display: block; font-size: .95rem; font-weight: 400; }
+.cue .act { margin-left: 4px; padding: 5px 11px; border-radius: 999px; background: rgba(28,28,32,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; font-size: .74rem; }
+@media (max-width: 900px) { .cue { right: 5%; bottom: 20px; } }
+@media (max-width: 520px) { .cue .card div b { font-size: .85rem; } .glass { padding: 16px; } }
+@media (max-width: 560px) { nav.links a:not(.cta) { display: none; } header.top .logo .word { letter-spacing: .45em; } }
+
+/* ---------- toolkit ---------- */
+.toolkit { padding-block: 18vh 12vh; border-top: 1px solid var(--line); }
+.toolkit h2 { font: 300 clamp(2.4rem, 5vw, 5rem)/1.02 var(--f); letter-spacing: -.045em; margin-top: 18px; max-width: 14ch; }
+.tk-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 40px 32px; }
+.tk-grid h3 { font: 500 .95rem/1.3 var(--f); padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.tk-grid ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; color: var(--muted); font-size: .98rem; }
+
+/* ---------- contact ---------- */
+.contact { padding-block: 20vh 12vh; border-top: 1px solid var(--line); }
+.contact h2 { font: 300 clamp(3rem, 8vw, 8.4rem)/1 var(--f); letter-spacing: -.05em; margin-top: 22px; }
+.contact h2 span { display: block; }
+.contact h2 .l2 { padding-left: 12%; }
+@media (max-width: 760px) { .contact h2 .l2 { padding-left: 0; } }
+.c-row { margin-top: 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.email { font: 400 clamp(1.1rem, 1vw + .9rem, 1.5rem)/1 var(--f); padding: 18px 24px; border: 1px solid var(--line); border-radius: 999px; user-select: all; max-width: 100%; overflow-wrap: anywhere; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 22px; border: 1px solid var(--ink); font: 500 .8rem/1 var(--f); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; background: var(--bg); color: var(--ink); transition: background .2s, color .2s; }
+.btn:hover { background: var(--ink); color: #fff; }
+.btn.dark { background: var(--ink); color: #fff; }
+footer .row { padding-block: 28px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="in">
+    <span class="logo"><span class="orb"></span><span class="word">Rahul</span></span>
+    <div class="bar"><i></i></div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="row side">
+    <a class="logo" href="#top" aria-label="Rahul A, home"><span class="orb"></span><span class="word">Rahul</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a class="opt" href="#ch-apm">Work</a>
+      <a class="opt" href="#toolkit">Toolkit</a>
+      <a class="opt" href="#contact">Contact</a>
+      <a class="cta" href="resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ 1 · WHO I AM ============ -->
+  <section class="hero side">
+    <p class="intro">Associate Product Manager at Supertails<br><span>who builds the signals products run on.</span></p>
+    <h1 class="statement">
+      <span class="l1">Every product decision</span>
+      <span class="l2">starts with a signal.</span>
+      <span class="l3">I'm Rahul. I build products</span>
+      <span class="l4 grad">that measure themselves.</span>
+    </h1>
+    <div class="lede-wrap">
+      <p class="lede reveal" data-solid="14">I'm a product manager at Supertails, India's pet-care platform. I came up through data, from intern to analyst to data engineer to senior data engineer. Today I own what the product runs on: event tracking, attribution, identity and the integrations behind growth, across web, Android and iOS.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · EXPERIENCE PICKER ============ -->
+  <section class="picker side" id="experience">
+    <h2>Which chapter interests you?</h2>
+    <div class="words" id="words">
+      <a href="#ch-apm" data-cap="<b>Associate Product Manager</b> · current · 5 projects">Product Manager</a>
+      <a href="#ch-sde" data-cap="<b>Senior Data Engineer</b> · product data platform · team of 5+">Senior Data Engineer</a>
+      <a href="#ch-de" data-cap="<b>Data Engineer</b> · streaming, orchestration, AI access">Data Engineer</a>
+      <a href="#ch-da" data-cap="<b>Data Analyst, Growth Team</b> · from Jul 2023">Data Analyst</a>
+      <a href="#ch-int" data-cap="<b>Data Analyst Intern</b> · Apr 2023 to Jul 2023">Intern</a>
+    </div>
+    <p class="pick-cap" id="pickCap">Supertails · Apr 2023 to now · Bengaluru</p>
+  </section>
+
+  <!-- ============ CHAPTER: APM ============ -->
+  <section class="chapter side" id="ch-apm">
+    <p class="label">Chapter 01 · Current</p>
+    <h2>Associate <span class="grad">Product Manager</span></h2>
+    <p class="sum reveal" data-solid="8">I own what the product runs on: tracking, attribution, identity and the third-party integrations behind growth, across web, Android and iOS.</p>
+    <nav class="jump" aria-label="Product Manager projects">
+      <a href="#p-migration">Platform migration</a><a href="#p-unbxd">Unbxd Search</a><a href="#p-chatgpt">ChatGPT Ads</a><a href="#p-segment">Segment CDP</a><a href="#p-osmos">Osmos retail media</a>
+    </nav>
+  </section>
+
+  <section class="proj" id="p-migration">
+    <div class="txt">
+      <p class="label">Product Manager · 01</p>
+      <h3 class="ttl">Migration</h3>
+      <p class="para reveal" data-solid="15">Supertails is moving off Shopify and Appmaker to its own CMS and native apps. I lead the analytics and integration workstreams: cross-platform event tracking, attribution, user identity continuity, experimentation and third-party readiness, so nothing goes dark on launch day.</p>
+      <div class="facts"><div><b>3</b><span>platforms moving at once</span></div><div><b>5</b><span>workstreams I own</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-unbxd">Unbxd Search</a><a href="#p-chatgpt">ChatGPT Ads</a><a href="#p-segment">Segment CDP</a><a href="#p-osmos">Osmos</a></nav></div>
+    </div>
+    <div class="vis s1">
+      <div class="glass">
+        <div class="g-hd"><span>Migration · what I own</span><span>in progress</span></div>
+        <div class="row2">
+          <div class="box old"><span class="t">From</span><b>Shopify + Appmaker</b></div>
+          <span class="arrow-r" aria-hidden="true">→</span>
+          <div class="box new"><span class="t">To</span><b>Own CMS + native apps</b></div>
+        </div>
+        <ul class="list">
+          <li><i>01</i>Cross-platform event tracking<em>owner</em></li>
+          <li><i>02</i>Attribution<em>owner</em></li>
+          <li><i>03</i>User identity continuity<em>owner</em></li>
+          <li><i>04</i>Experimentation<em>owner</em></li>
+          <li><i>05</i>Third-party integration readiness<em>owner</em></li>
+        </ul>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">→</span><div><span>Migration</span><b>Web · Android · iOS</b></div></div><span class="act">In progress</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-unbxd">
+    <div class="txt">
+      <p class="label">Product Manager · 02</p>
+      <h3 class="ttl">Search</h3>
+      <p class="para reveal" data-solid="10">I owned the technical rollout of Netcore Unbxd Search. I defined the integration requirements, event schemas and API tracking, then validated the analytics on web and mobile. With data we could trust, every optimisation was measurable, and search-to-conversion climbed from 13% to 29%.</p>
+      <div class="facts"><div><b>13% → 29%</b><span>search-to-conversion</span></div><div><b>2.2×</b><span>searchers who buy</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-chatgpt">ChatGPT Ads</a><a href="#p-segment">Segment CDP</a><a href="#p-osmos">Osmos</a><a href="#p-migration">Migration</a></nav></div>
+    </div>
+    <div class="vis s2">
+      <div class="glass">
+        <div class="g-hd"><span>Unbxd · web, Android, iOS</span><span>illustrative</span></div>
+        <div class="search"><span aria-hidden="true">⌕</span><span>puppy food</span><span class="caret"></span></div>
+        <div class="thumbs"><div></div><div></div><div></div></div>
+        <div class="code"><span class="k">Search Result Clicked</span> { request_id: <span class="s">"a91f…"</span>, position: 2 }</div>
+        <div class="bars">
+          <div class="bar"><span>Before</span><span class="tr"><i style="--w:32.5%"></i></span><b>13%</b></div>
+          <div class="bar after"><span>After</span><span class="tr"><i style="--w:72.5%"></i></span><b>29%</b></div>
+        </div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">⌕</span><div><span>Unbxd Search</span><b>13% → 29% conversion</b></div></div><span class="act">↑ 2.2× searchers who buy</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-chatgpt">
+    <div class="txt">
+      <p class="label">Product Manager · 03</p>
+      <h3 class="ttl">ChatGPT Ads</h3>
+      <p class="para reveal" data-solid="10">I led the end-to-end integration of ChatGPT Ads. A browser-side Pixel and a server-side Conversions API track every conversion and credit it to the right campaign. The new channel now brings 4% of user acquisition and 0.5% of platform revenue.</p>
+      <div class="facts"><div><b>4%</b><span>of user acquisition</span></div><div><b>0.5%</b><span>of platform revenue</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-segment">Segment CDP</a><a href="#p-osmos">Osmos</a><a href="#p-migration">Migration</a><a href="#p-unbxd">Unbxd Search</a></nav></div>
+    </div>
+    <div class="vis s3">
+      <div class="glass">
+        <div class="g-hd"><span>Pixel + CAPI · one order</span><span>illustrative</span></div>
+        <div class="dual">
+          <div class="box"><span class="t">Browser</span><b>Pixel</b><span class="code"><span class="k">purchase</span> · <span class="s">ord_8812</span></span></div>
+          <div class="box"><span class="t">Server</span><b>Conversions API</b><span class="code"><span class="k">purchase</span> · <span class="s">ord_8812</span></span></div>
+        </div>
+        <div class="merge" aria-hidden="true">↘ ↙</div>
+        <div class="pill-d">deduplicated on event_id</div>
+        <div class="merge" aria-hidden="true">↓</div>
+        <div class="final"><b>ChatGPT Ads</b><span>✓ conversion attributed</span></div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">AI</span><div><span>ChatGPT Ads</span><b>4% of user acquisition</b></div></div><span class="act">0.5% of revenue</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-segment">
+    <div class="txt">
+      <p class="label">Product Manager · 04</p>
+      <h3 class="ttl">Segment CDP</h3>
+      <p class="para reveal" data-solid="12">I led the Twilio Segment SDK rollout across web, Android and iOS. I defined the event tracking architecture, standard event schemas and identity rules, so one customer is one customer everywhere, and every analytics and marketing tool reads the same clean stream.</p>
+      <div class="facts"><div><b>3</b><span>platforms, one schema</span></div><div><b>1</b><span>identity per customer</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-osmos">Osmos</a><a href="#p-migration">Migration</a><a href="#p-unbxd">Unbxd Search</a><a href="#p-chatgpt">ChatGPT Ads</a></nav></div>
+    </div>
+    <div class="vis s4">
+      <div class="glass">
+        <div class="g-hd"><span>Segment · signal map</span><span>illustrative</span></div>
+        <svg class="diag" viewBox="0 0 400 250" role="img" aria-label="Web, Android and iOS send events into Segment, which feeds Meta, Google Ads, GA4 and Firebase, CleverTap and AppsFlyer">
+          <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#9d8df1"/><stop offset=".55" stop-color="#e58fb6"/><stop offset="1" stop-color="#efa35a"/></linearGradient></defs>
+          <g fill="none" stroke="url(#sg)" stroke-width="1.6" class="dash">
+            <path d="M92 50 C130 50 130 125 160 125"/><path d="M92 125 H160"/><path d="M92 200 C130 200 130 125 160 125"/>
+            <path d="M240 125 C270 125 270 25 290 25"/><path d="M240 125 C270 125 270 75 290 75"/><path d="M240 125 H290"/><path d="M240 125 C270 125 270 175 290 175"/><path d="M240 125 C270 125 270 225 290 225"/>
+          </g>
+          <g font-family="Geist, sans-serif" font-size="12" fill="#151517">
+            <rect x="12" y="34" width="80" height="32" rx="10" fill="#fff" stroke="#ececf0"/><text x="52" y="54" text-anchor="middle">Web</text>
+            <rect x="12" y="109" width="80" height="32" rx="10" fill="#fff" stroke="#ececf0"/><text x="52" y="129" text-anchor="middle">Android</text>
+            <rect x="12" y="184" width="80" height="32" rx="10" fill="#fff" stroke="#ececf0"/><text x="52" y="204" text-anchor="middle">iOS</text>
+            <rect x="160" y="100" width="80" height="50" rx="14" fill="#151517"/><text x="200" y="130" text-anchor="middle" fill="#fff" font-weight="500">Segment</text>
+            <g font-size="11">
+              <rect x="290" y="12" width="102" height="26" rx="9" fill="#fff" stroke="#ececf0"/><text x="341" y="29" text-anchor="middle">Meta</text>
+              <rect x="290" y="62" width="102" height="26" rx="9" fill="#fff" stroke="#ececf0"/><text x="341" y="79" text-anchor="middle">Google Ads</text>
+              <rect x="290" y="112" width="102" height="26" rx="9" fill="#fff" stroke="#ececf0"/><text x="341" y="129" text-anchor="middle">GA4 / Firebase</text>
+              <rect x="290" y="162" width="102" height="26" rx="9" fill="#fff" stroke="#ececf0"/><text x="341" y="179" text-anchor="middle">CleverTap</text>
+              <rect x="290" y="212" width="102" height="26" rx="9" fill="#fff" stroke="#ececf0"/><text x="341" y="229" text-anchor="middle">AppsFlyer</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">ID</span><div><span>Segment</span><b>One user, three platforms</b></div></div><span class="act">Identity resolved</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-osmos">
+    <div class="txt">
+      <p class="label">Product Manager · 05</p>
+      <h3 class="ttl">Retail media</h3>
+      <p class="para reveal" data-solid="12">I'm driving the Osmos AI Retail Media integration across web and mobile. I'm defining where sponsored ads appear, what gets tracked and the attribution framework that measures how each ad performs, so retail media can become a new revenue line.</p>
+      <div class="facts"><div><b>Web + app</b><span>sponsored placements</span></div><div><b>Ongoing</b><span>current workstream</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#ch-sde">Senior Data Engineer</a><a href="#p-migration">Migration</a><a href="#p-unbxd">Unbxd Search</a></nav></div>
+    </div>
+    <div class="vis s1">
+      <div class="glass">
+        <div class="g-hd"><span>Osmos · sponsored placement</span><span>illustrative</span></div>
+        <div class="shelf">
+          <div class="prod sp"><span class="sp-tag">Sponsored</span><div class="img"></div><div class="ln"></div><div class="ln" style="width:60%"></div></div>
+          <div class="prod"><div class="img"></div><div class="ln"></div><div class="ln" style="width:70%"></div></div>
+          <div class="prod"><div class="img"></div><div class="ln"></div><div class="ln" style="width:50%"></div></div>
+        </div>
+        <div class="ev">
+          <div><span class="ok">✓</span><span><span class="k">Ad Impression</span> { placement: <span class="s">"search_top"</span> }</span></div>
+          <div><span class="ok">✓</span><span><span class="k">Ad Clicked</span> { ad_id, position: 1 }</span></div>
+          <div><span class="ok">✓</span><span><span class="k">Order Attributed</span> { ad_id, value }</span></div>
+        </div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">Ad</span><div><span>Osmos</span><b>Sponsored placement</b></div></div><span class="act">Ad clicked → order attributed</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: SDE ============ -->
+  <section class="chapter side" id="ch-sde">
+    <p class="label">Chapter 02</p>
+    <h2>Senior <span class="grad">Data Engineer</span></h2>
+    <p class="sum reveal" data-solid="8">I led the product data platform and a team of analysts, turning customer data into rules the product could act on in real time.</p>
+    <nav class="jump" aria-label="Senior Data Engineer projects"><a href="#p-pet">Pet Profile</a><a href="#p-team">Team leadership</a></nav>
+  </section>
+
+  <section class="proj" id="p-pet">
+    <div class="txt">
+      <p class="label">Senior Data Engineer · 01</p>
+      <h3 class="ttl">Pet Profile</h3>
+      <p class="para reveal" data-solid="15">I designed the customer segmentation backend and a unified Pet Profile used in production. It evaluates customer-level rules that drive real-time personalisation, targeted CRM actions, rewards eligibility and fulfilment across the website, app, CRM and 12 clinics.</p>
+      <div class="facts"><div><b>12</b><span>clinics on one profile</span></div><div><b>4</b><span>surfaces: web, app, CRM, clinics</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-team">Team leadership</a><a href="#ch-de">Data Engineer</a></nav></div>
+    </div>
+    <div class="vis s3">
+      <div class="glass">
+        <div class="g-hd"><span>Pet Profile · example</span><span>illustrative</span></div>
+        <div class="pet"><span class="avatar">B</span><div><b>Bruno</b><span>Dog · 14 months</span></div></div>
+        <div class="kv">
+          <div><span>Segment</span><b>Repeat buyer</b></div>
+          <div><span>Rewards eligible</span><b class="yes">Yes</b></div>
+          <div><span>Nearest clinic</span><b>HSR Layout</b></div>
+        </div>
+        <div class="tags"><span>website</span><span>app</span><span>CRM</span><span>clinics</span></div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">12</span><div><span>Pet Profile</span><b>Used across 12 clinics</b></div></div><span class="act">Real-time rules</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-team">
+    <div class="txt">
+      <p class="label">Senior Data Engineer · 02</p>
+      <h3 class="ttl">Leading a team</h3>
+      <p class="para reveal" data-solid="10">I led and mentored a team of 5+ data analysts. I set priorities, reviewed the work and kept delivery moving across cross-team initiatives, so the team shipped reliably for product, growth and operations.</p>
+      <div class="facts"><div><b>5+</b><span>analysts mentored</span></div><div><b>Cross-team</b><span>initiatives delivered</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#ch-de">Data Engineer</a><a href="#p-pet">Pet Profile</a></nav></div>
+    </div>
+    <div class="vis s2">
+      <div class="glass">
+        <div class="g-hd"><span>Team · data analysts</span><span>5+</span></div>
+        <svg class="diag" viewBox="0 0 400 230" role="img" aria-label="Rahul at the centre, connected to five analysts">
+          <defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#9d8df1"/><stop offset=".55" stop-color="#e58fb6"/><stop offset="1" stop-color="#efa35a"/></linearGradient></defs>
+          <g stroke="#e2e0ea" stroke-width="1.5"><path d="M200 115 L80 50"/><path d="M200 115 L320 50"/><path d="M200 115 L60 165"/><path d="M200 115 L340 165"/><path d="M200 115 L200 205"/></g>
+          <g fill="#fff" stroke="#ececf0"><circle cx="80" cy="50" r="22"/><circle cx="320" cy="50" r="22"/><circle cx="60" cy="165" r="22"/><circle cx="340" cy="165" r="22"/><circle cx="200" cy="205" r="22"/></g>
+          <g font-family="Geist, sans-serif" font-size="10" fill="#6c6c75" text-anchor="middle"><text x="80" y="54">DA</text><text x="320" y="54">DA</text><text x="60" y="169">DA</text><text x="340" y="169">DA</text><text x="200" y="209">DA</text></g>
+          <circle cx="200" cy="115" r="34" fill="url(#tg)"/><text x="200" y="120" text-anchor="middle" font-family="Geist, sans-serif" font-size="14" font-weight="500" fill="#fff">RA</text>
+        </svg>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">5+</span><div><span>Team</span><b>Mentoring data analysts</b></div></div><span class="act">Cross-team delivery</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: DE ============ -->
+  <section class="chapter side" id="ch-de">
+    <p class="label">Chapter 03</p>
+    <h2><span class="grad">Data</span> Engineer</h2>
+    <p class="sum reveal" data-solid="6">I built the infrastructure underneath: streaming, orchestration, and an AI layer that gives people safe access to data.</p>
+    <nav class="jump" aria-label="Data Engineer projects"><a href="#p-mcp">MCP access layer</a><a href="#p-malacca">Malacca</a><a href="#p-airflow">Airflow</a></nav>
+  </section>
+
+  <section class="proj" id="p-mcp">
+    <div class="txt">
+      <p class="label">Data Engineer · 01</p>
+      <h3 class="ttl">AI data access</h3>
+      <p class="para reveal" data-solid="14">I built an MCP-based analytics access layer that lets AI clients query company data in plain language. It connects MySQL and OpenMetadata, handles authentication and keeps PII behind guardrails by default.</p>
+      <div class="facts"><div><b>Plain English</b><span>questions, governed answers</span></div><div><b>PII</b><span>masked by default</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-malacca">Malacca</a><a href="#p-airflow">Airflow</a></nav></div>
+    </div>
+    <div class="vis s4">
+      <div class="glass">
+        <div class="g-hd"><span>MCP · analytics access</span><span>illustrative</span></div>
+        <div class="chat">
+          <div class="bub me">Top repeat buyers in Bengaluru last month?</div>
+          <div class="tool">→ search_metadata("orders") · run_query(mysql)</div>
+          <div class="bub ai">Here are the top 2.
+            <table class="mini">
+              <tr><th>customer</th><th>phone</th><th>orders</th></tr>
+              <tr><td>C-10482</td><td class="mask">••••• masked</td><td>9</td></tr>
+              <tr><td>C-22917</td><td class="mask">••••• masked</td><td>8</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">MCP</span><div><span>Access layer</span><b>PII masked by default</b></div></div><span class="act">OpenMetadata-aware</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-malacca">
+    <div class="txt">
+      <p class="label">Data Engineer · 02</p>
+      <h3 class="ttl">Malacca</h3>
+      <p class="para reveal" data-solid="11">I built Malacca, our internal streaming platform on Apache Kafka. It gives every webhook producer one standard path through Kafka brokers to downstream consumers, and handles more than 5 million events a day.</p>
+      <div class="facts"><div><b>5M+</b><span>events a day</span></div><div><b>Real time</b><span>webhooks to consumers</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-airflow">Airflow</a><a href="#p-mcp">AI data access</a></nav></div>
+    </div>
+    <div class="vis s1">
+      <div class="glass">
+        <div class="g-hd"><span>Malacca · topics</span><span>streaming</span></div>
+        <div class="stages"><span>webhooks</span><span>brokers</span><span>consumers</span></div>
+        <div class="lanes">
+          <div class="lane"><span class="lab">orders</span><i></i><i></i><i></i></div>
+          <div class="lane"><span class="lab">bookings</span><i></i><i></i><i></i></div>
+          <div class="lane"><span class="lab">events</span><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">5M</span><div><span>Malacca</span><b>5M+ events a day</b></div></div><span class="act">Apache Kafka</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-airflow">
+    <div class="txt">
+      <p class="label">Data Engineer · 03</p>
+      <h3 class="ttl">Orchestration</h3>
+      <p class="para reveal" data-solid="10">I set up a self-hosted Apache Airflow platform for data orchestration. It runs production ETL and ELT workloads across many data sources and the downstream systems that depend on them.</p>
+      <div class="facts"><div><b>Production</b><span>ETL / ELT workloads</span></div><div><b>Self-hosted</b><span>Apache Airflow</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#ch-da">Data Analyst</a><a href="#p-mcp">AI data access</a></nav></div>
+    </div>
+    <div class="vis s2">
+      <div class="glass">
+        <div class="g-hd"><span>Airflow · daily DAG</span><span>illustrative</span></div>
+        <svg class="diag" viewBox="0 0 400 200" role="img" aria-label="A pipeline graph of extract, transform and load tasks">
+          <defs><linearGradient id="ag" x1="0" x2="1"><stop offset="0" stop-color="#9d8df1"/><stop offset="1" stop-color="#efa35a"/></linearGradient></defs>
+          <g stroke="#d9d6e4" stroke-width="1.5" fill="none"><path d="M86 100 L134 52"/><path d="M86 100 L134 148"/><path d="M214 52 L254 100"/><path d="M214 148 L254 100"/><path d="M334 100 L350 100"/></g>
+          <g font-family="Geist Mono, monospace" font-size="10" text-anchor="middle">
+            <rect x="10" y="84" width="76" height="32" rx="9" fill="#fff" stroke="#ececf0"/><text x="48" y="104" fill="#151517">extract</text>
+            <rect x="134" y="36" width="80" height="32" rx="9" fill="#fff" stroke="#ececf0"/><text x="174" y="56" fill="#151517">orders</text>
+            <rect x="134" y="132" width="80" height="32" rx="9" fill="#fff" stroke="#ececf0"/><text x="174" y="152" fill="#151517">customers</text>
+            <rect x="254" y="84" width="80" height="32" rx="9" fill="url(#ag)"/><text x="294" y="104" fill="#fff">transform</text>
+            <circle cx="366" cy="100" r="16" fill="#e6f6ec"/><text x="366" y="104" fill="#2f8f5b">✓</text>
+          </g>
+        </svg>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">⟳</span><div><span>Airflow</span><b>Production pipelines</b></div></div><span class="act">All tasks succeeded</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: DA ============ -->
+  <section class="chapter side" id="ch-da">
+    <p class="label">Chapter 04 · Growth Team</p>
+    <h2>Data <span class="grad">Analyst</span></h2>
+    <p class="sum reveal" data-solid="9">I built the first analytics warehouse and the reports the company ran on, then used the data to decide where clinics should open.</p>
+    <nav class="jump" aria-label="Data Analyst projects"><a href="#p-warehouse">Warehouse and MIS</a><a href="#p-geo">Customer density map</a></nav>
+  </section>
+
+  <section class="proj" id="p-warehouse">
+    <div class="txt">
+      <p class="label">Data Analyst · 01</p>
+      <h3 class="ttl">Warehouse</h3>
+      <p class="para reveal" data-solid="10">I designed and built Supertails' analytics database and warehouse. It brings operational and third-party data into standard, analytics-ready models with automated pipelines, and it powered the organisation-level MIS reporting I owned and led.</p>
+      <div class="facts"><div><b>Org-wide</b><span>MIS reporting</span></div><div><b>Automated</b><span>pipelines</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#p-geo">Density map</a><a href="#ch-int">Intern</a></nav></div>
+    </div>
+    <div class="vis s3">
+      <div class="glass">
+        <div class="g-hd"><span>MIS · weekly view</span><span>illustrative</span></div>
+        <div class="kpis3"><div><span>Orders</span><i style="--w:82%"></i></div><div><span>Revenue</span><i style="--w:68%"></i></div><div><span>Repeat rate</span><i style="--w:54%"></i></div></div>
+        <svg class="diag" viewBox="0 0 400 120" role="img" aria-label="A trend line rising over time">
+          <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#9d8df1"/><stop offset=".55" stop-color="#e58fb6"/><stop offset="1" stop-color="#efa35a"/></linearGradient><linearGradient id="lf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e58fb6" stop-opacity=".25"/><stop offset="1" stop-color="#e58fb6" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#f0eef4"><path d="M0 30H400M0 60H400M0 90H400"/></g>
+          <path d="M0 100 L50 92 L100 95 L150 78 L200 70 L250 62 L300 48 L350 40 L400 26 L400 120 L0 120Z" fill="url(#lf)"/>
+          <path d="M0 100 L50 92 L100 95 L150 78 L200 70 L250 62 L300 48 L350 40 L400 26" fill="none" stroke="url(#lg)" stroke-width="2.5"/>
+          <circle cx="396" cy="27" r="4" fill="#efa35a"/>
+        </svg>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">DW</span><div><span>Warehouse</span><b>One source of truth</b></div></div><span class="act">Org-wide MIS</span></div>
+    </div>
+  </section>
+
+  <section class="proj" id="p-geo">
+    <div class="txt">
+      <p class="label">Data Analyst · 02</p>
+      <h3 class="ttl">Density map</h3>
+      <p class="para reveal" data-solid="14">I mapped where our customers live using Google Maps and OpenStreetMap APIs. The high-density clusters it revealed informed where clinics opened, how supply was planned and where local marketing went.</p>
+      <div class="facts"><div><b>Clinics</b><span>sited on demand data</span></div><div><b>Supply</b><span>and local marketing planning</span></div></div>
+      <div class="next"><p class="label">Up next</p><nav><a href="#ch-int">Intern</a><a href="#p-warehouse">Warehouse</a></nav></div>
+    </div>
+    <div class="vis s4">
+      <div class="glass">
+        <div class="g-hd"><span>Customer clusters</span><span>illustrative</span></div>
+        <canvas class="geo" id="geo" aria-label="Dots grouped into dense customer clusters"></canvas>
+      </div>
+      <div class="cue"><div class="card"><span class="ico">⌖</span><div><span>Geo</span><b>Dense clusters found</b></div></div><span class="act">Guides clinic expansion</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: INTERN ============ -->
+  <section class="chapter side" id="ch-int">
+    <p class="label">Chapter 05 · Apr 2023 to Jul 2023</p>
+    <h2>Where it <span class="grad">started.</span></h2>
+    <p class="sum reveal" data-solid="11">I joined Supertails as a data analyst intern in April 2023. Before that, I studied civil engineering at UVCE, Bengaluru, from 2017 to 2021. The material changed from concrete to code. Checking what holds the weight came along.</p>
+    <nav class="jump" aria-label="Next"><a href="#toolkit">What I bring</a><a href="#contact">Get in touch</a></nav>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <section class="toolkit side" id="toolkit">
+    <p class="label">Toolkit</p>
+    <h2>What I bring to a <span class="grad">product team.</span></h2>
+    <div class="tk-grid">
+      <div><h3>Product management</h3><ul><li>PRDs</li><li>Roadmapping</li><li>Prioritisation</li><li>Stakeholder management</li><li>User journeys</li><li>Release management</li><li>UAT</li></ul></div>
+      <div><h3>Analytics &amp; growth</h3><ul><li>KPIs</li><li>Funnel analysis</li><li>CRO</li><li>Experiment design</li><li>A/B testing (GrowthBook)</li><li>Acquisition &amp; attribution</li></ul></div>
+      <div><h3>Technical product</h3><ul><li>API / SDK integrations</li><li>Twilio Segment CDP</li><li>Event architecture</li><li>Identity resolution</li><li>Platform migration</li><li>Retail media</li></ul></div>
+      <div><h3>Data &amp; tools</h3><ul><li>SQL, Python, BigQuery</li><li>GA4 / Firebase</li><li>AppsFlyer, CleverTap</li><li>Looker, Tableau</li><li>Kafka, Airflow, dbt</li><li>GCP, MySQL</li></ul></div>
+      <div><h3>AI &amp; automation</h3><ul><li>MCP servers</li><li>LLM integrations</li><li>AI agents</li><li>RAG</li><li>n8n</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact side" id="contact">
+    <p class="label">Contact</p>
+    <h2><span>Let's build</span><span class="l2 grad">what's next.</span></h2>
+    <div class="c-row">
+      <span class="email" id="email">gowdarahul54@gmail.com</span>
+      <button class="btn dark" type="button" id="copyBtn">Copy email</button>
+      <a class="btn" href="https://www.linkedin.com/in/iyumrahul" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/iyumrahul" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="row side">
+    <span>© 2026 Rahul A · Bengaluru</span>
+    <span>Measured twice, shipped once.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  // loader
+  setTimeout(function () { $('loader').classList.add('done'); }, reduce ? 0 : 1100);
+
+  // scroll-linked word reveal
+  var reveals = [].slice.call(document.querySelectorAll('.reveal')).map(function (el) {
+    var words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    return { el: el, spans: el.querySelectorAll('.w'), solid: +(el.dataset.solid || 0) };
+  });
+  function paint() {
+    var vh = innerHeight;
+    reveals.forEach(function (r) {
+      var rect = r.el.getBoundingClientRect();
+      var p = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.9 - rect.top) / (rect.height + vh * 0.35)));
+      var n = Math.round(r.solid + p * (r.spans.length - r.solid));
+      for (var i = 0; i < r.spans.length; i++) r.spans[i].classList.toggle('on', i < n);
+    });
+  }
+
+  // nav state
+  var navLinks = document.querySelectorAll('nav.links a[href^="#"]');
+  var marks = [['experience', '#experience'], ['ch-apm', '#ch-apm'], ['toolkit', '#toolkit'], ['contact', '#contact']];
+  function navState() {
+    var y = scrollY + 160, cur = null;
+    marks.forEach(function (m) { var el = $(m[0]); if (el && el.offsetTop <= y) cur = m[1]; });
+    navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === cur); });
+  }
+  var ticking = false;
+  addEventListener('scroll', function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { paint(); navState(); ticking = false; });
+  }, { passive: true });
+  addEventListener('resize', paint);
+  paint(); navState();
+
+  // chapter picker caption
+  var cap = $('pickCap'), base = cap.innerHTML;
+  document.querySelectorAll('#words a').forEach(function (a) {
+    a.addEventListener('mouseenter', function () { cap.innerHTML = a.dataset.cap; });
+    a.addEventListener('focus', function () { cap.innerHTML = a.dataset.cap; });
+    a.addEventListener('mouseleave', function () { cap.innerHTML = base; });
+    a.addEventListener('blur', function () { cap.innerHTML = base; });
+  });
+
+  // density map
+  var cv = $('geo');
+  if (cv) {
+    var draw = function () {
+      var w = cv.clientWidth, h = cv.clientHeight, dpr = Math.min(2, devicePixelRatio || 1);
+      cv.width = w * dpr; cv.height = h * dpr;
+      var g = cv.getContext('2d'); g.scale(dpr, dpr);
+      var seed = 7, r = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+      var cols = ['#9d8df1', '#e58fb6', '#efa35a'], centers = [[w * .28, h * .42], [w * .6, h * .3], [w * .74, h * .7]];
+      g.globalAlpha = .25; for (var k = 0; k < 140; k++) { g.fillStyle = '#c4c4cc'; g.beginPath(); g.arc(r() * w, r() * h, 1.3, 0, 7); g.fill(); }
+      for (var j = 0; j < 520; j++) {
+        var c = centers[j % 3], a = r() * 6.28, d = Math.pow(r(), 1.9) * Math.min(w, h) * .32;
+        g.globalAlpha = .6; g.fillStyle = cols[j % 3]; g.beginPath(); g.arc(c[0] + Math.cos(a) * d * 1.3, c[1] + Math.sin(a) * d * .8, 1.7, 0, 7); g.fill();
+      }
+      g.globalAlpha = 1; g.strokeStyle = '#151517'; g.lineWidth = 1.2;
+      centers.forEach(function (c2) { g.beginPath(); g.arc(c2[0], c2[1], 10, 0, 7); g.stroke(); });
+    };
+    draw(); addEventListener('resize', draw);
+  }
+
+  // copy email
+  var btn = $('copyBtn'), email = $('email');
+  btn.addEventListener('click', function () {
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1600); }
+    function sel() { var rg = document.createRange(); rg.selectNodeContents(email); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); }
+    if (navigator.clipboard) navigator.clipboard.writeText('gowdarahul54@gmail.com').then(done, sel); else sel();
+  });
+})();
+</script>
+</body>
+</html>
